@@ -1,31 +1,21 @@
-@extends('layouts.client')
+@extends('layouts.user.client')
 @section('main')
       <!-- Login/Register Form -->
     <div class="form-container">
         <div class="form-header">
             <h2 id="form-title">Login</h2>
         </div>
-        <form id="auth-form">
+        <form action="" method="POST">
+            @csrf
             <!-- Username/Email -->
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Nhập email của bạn" required>
+                <input type="email" id="email" placeholder="Nhập email của bạn" required name="email">
             </div>
             <!-- Password -->
             <div class="form-group">
                 <label for="password">Mật Khẩu</label>
-                <input type="password" id="password" placeholder="Nhập mật khẩu của bạn" required>
-            </div>
-            <!-- Switch to Register -->
-            <div id="additional-fields" style="display: none;">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" placeholder="Enter your username">
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" placeholder="Confirm your password">
-                </div>
+                <input type="password" id="password" placeholder="Nhập mật khẩu của bạn" required name="password">
             </div>
             <!-- Submit Button -->
             <button type="submit" class="form-button">Đăng nhập</button>
@@ -35,7 +25,7 @@
                    <a href="#" id="reset-password">Lấy lại mật khẩu</a>
                 </p>
                 <p class="form-switch">
-                    <a href="#" id="toggle-form">Đăng ký</a>
+                    <a href="{{route('authen.register')}}">Đăng ký</a>
                 </p>
             </div>
             
@@ -139,7 +129,7 @@
 
 
         </style>
-        <script>
+        {{-- <script>
             // Toggle Login/Register Form
             const toggleForm = document.getElementById('toggle-form');
             const formTitle = document.getElementById('form-title');
@@ -165,7 +155,7 @@
                 alert(`${formTitle.innerText} successful!`);
             });
 
-        </script>
+        </script> --}}
 
     <script src="script.js"></script>
 @endsection

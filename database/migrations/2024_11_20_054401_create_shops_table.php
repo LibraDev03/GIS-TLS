@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
+            $table->string('name',255)->nullable();
+            $table->decimal('latitude', 65, 30); 
+            $table->decimal('longitude', 65, 30);
+            $table->string('address', 255); 
+            $table->char('phone', 10); 
+            $table->string('image');
             $table->timestamps();
         });
     }
