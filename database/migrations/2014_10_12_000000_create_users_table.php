@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone', 15);
             $table->enum('gender', ['nam', 'nu', 'khac']);
             $table->date('birthday');
-            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->string('role')->default('1'); 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

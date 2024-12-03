@@ -52,7 +52,14 @@ class AuthenController extends Controller
         // dd($data);
 
         if(auth()->attempt($data)){
-            return redirect()->route('client.home');
+
+            $role = auth()?->user()?->role;
+            if($role != 0) {
+                return redirect()->route('client.home')->with('suc', 'dang nhap thanh cong');
+            }else{
+                return redirect()->route('admin.dashboard')->with('suc', 'dang nhap thanh cong');
+            }
+            
         }else{
              return redirect()->back();
         }

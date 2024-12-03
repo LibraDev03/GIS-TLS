@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin=""/>
+        <script src="https://unpkg.com/leaflet-routing-machine"></script>
         <style>
             #map {
                 height: 625px;
@@ -37,12 +38,21 @@
 
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
+        @if (Auth::check())
+            <ul>
+                <li><a href="{{route('admin.dashboard')}}">Quản trị</a></li>
+                <li><a href="{{route('client.home')}}">Trang chủ</a></li>
+                <li><a href="{{route('authen.register')}}">Đăng kí</a></li>
+                <li><a href="#">Đăng xuất</a></li>
+            </ul>
+        @else
         <ul>
             <li><a href="{{route('client.home')}}">Trang chủ</a></li>
             <li><a href="{{route('authen.register')}}">Đăng kí</a></li>
             <li><a href="{{route('authen.login')}}">Đăng nhập </a></li>
-            <li><a href="#">Đăng xuất</a></li>
         </ul>
+        @endif
+       
     </div>
 
     <!-- Main Content -->
@@ -139,6 +149,27 @@
         /* Sidebar Active State */
         .sidebar.active {
             left: 0;
+        }
+
+        /* Tùy chỉnh hộp chứa các chỉ dẫn của Leaflet Routing Machine */
+        .leaflet-routing-container {
+            background-color: white; /* Nền trắng */
+            color: black;             /* Chữ đen */
+            font-family: Arial, sans-serif;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Thêm bóng cho hộp chứa */
+        }
+
+        /* Tùy chỉnh các dòng chỉ dẫn */
+        .leaflet-routing-instructions {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Thay đổi mũi tên và kiểu dáng chỉ dẫn */
+        .leaflet-routing-icon {
+            background-color: #ff6600;
         }
 
     </style>

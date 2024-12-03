@@ -21,7 +21,7 @@
                 @endif
              </a>
             <br>
-            {{-- <a  class="btn btn-secondary" href="">Đăng xuất</a> --}}
+            <a  class="btn btn-secondary" href="{{ route('authen.logout') }}">Đăng xuất</a>
             </div>
           </div>
         </div>

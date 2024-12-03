@@ -29,9 +29,11 @@ Route::group(['prefix'=>'authen'], function(){
 
     Route::get('/login', [AuthenController::class, 'login'])->name('authen.login');
     Route::post('/login', [AuthenController::class, 'check_login']);
+
+    Route::get('/logout', [AuthenController::class, 'logout'])->name('authen.logout');
 });
 
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix' => 'admin',"middleware" => "checkAdmin"], function(){
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
     Route::resources([
@@ -50,5 +52,6 @@ Route::group(['prefix'=>'client'], function(){
 
     Route::get('/search', [HomeController::class, 'search'])->name('client.search');
 
+    Route::get('/api/shop', [HomeController::class, 'getShopById']);
 
 });

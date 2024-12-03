@@ -20,4 +20,6 @@ class HomeController extends Controller
         }
         return view('client.search', compact('data', 'shops'));
     }
+
+
 }
