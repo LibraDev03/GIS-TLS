@@ -13,7 +13,7 @@
         <style>
             #map {
                 height: 625px;
-                margin-left: 45px;
+                margin-left: 380px;
             }
         </style>
         <!-- Make sure you put this AFTER Leaflet's CSS -->
@@ -57,8 +57,19 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        @yield('main')
+        <div class="content-wrapper">
+            <!-- Khu vực dành cho danh sách -->
+            <div id="shop-list">
+                @yield('shop_list')
+            </div>
+    
+            <!-- Khu vực dành cho nội dung chính -->
+            <div id="main-view">
+                @yield('main')
+            </div>
+        </div>
     </main>
+    
 
     <script src="script.js"></script>
     <style>
@@ -170,6 +181,46 @@
         /* Thay đổi mũi tên và kiểu dáng chỉ dẫn */
         .leaflet-routing-icon {
             background-color: #ff6600;
+        }
+
+        /* Shop List Sidebar */
+        #shop-list {
+            position: fixed; /* Cố định vị trí */
+            top: 60px; /* Đẩy xuống dưới header */
+            left: 35px; /* Gắn sát bên trái */
+            width: 300px; /* Chiều rộng sidebar */
+            height: calc(100% - 60px); /* Chiều cao bằng 100% trừ chiều cao của header */
+            background-color: #444; /* Màu nền tối */
+            color: white; /* Màu chữ */
+            padding: 20px; /* Khoảng cách bên trong */
+            overflow-y: auto; /* Cho phép cuộn khi nội dung dài */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Đổ bóng để tạo chiều sâu */
+            z-index: 999; /* Nổi trên phần nội dung chính */
+            border-right: 1px solid #ccc; /* Đường viền phân cách với phần chính */
+        }
+
+        #shop-list ul {
+            list-style: none; /* Bỏ gạch đầu dòng */
+            padding: 0;
+            margin: 0;
+        }
+
+        #shop-list ul li {
+            margin: 15px 0; /* Khoảng cách giữa các mục */
+        }
+
+        #shop-list ul li a {
+            color: white; /* Màu chữ */
+            text-decoration: none; /* Bỏ gạch chân */
+            font-size: 16px; /* Kích thước chữ */
+            display: block; /* Chiếm toàn bộ chiều rộng của mục */
+            padding: 8px 10px; /* Khoảng cách bên trong mỗi mục */
+            border-radius: 4px; /* Bo góc các mục */
+            transition: background-color 0.3s ease; /* Hiệu ứng hover mượt mà */
+        }
+
+        #shop-list ul li a:hover {
+            background-color: #555; /* Đổi màu nền khi hover */
         }
 
     </style>

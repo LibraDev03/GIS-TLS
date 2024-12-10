@@ -26,7 +26,7 @@
                 <div class="small-box bg-success">
                     <div class="inner">
                     <p style="text-align: center">Số lượng người dùng</p>
-                    <h3 style="text-align: center"><sup style="font-size: 20px"></sup></h3>
+                    <h3 style="text-align: center">{{ $user->count()}}<sup style="font-size: 20px"></sup></h3>
                     </div>
                     <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -40,7 +40,8 @@
             <div class="small-box bg-info">
                 <div class="inner">
                   <p style="text-align: center">Số lượng cửa hàng</p>
-                  <h3 style="text-align: center"></h3>
+                  <h3 style="text-align: center">{{ $shop->count()}}<sup style="font-size: 20px"></sup></h3>
+
                 </div>
                 <div class="icon">
                 <i class="ion ion-bag"></i>
